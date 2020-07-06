@@ -1,0 +1,16 @@
+version: "3"
+services:
+#snapcast-server
+   snapcast-server:
+     container_name: snapcast-server
+     image: snapcast-server
+     volumes:
+       - ./conf/snapserver.conf:/etc/snapserver.conf
+       - /tmp/shairport:/tmp/shairport
+       - /tmp/mopidy:/tmp/mopidy
+       - /tmp/daapd/:/tmp/daapd/
+     ports:
+       - "1704:1704"
+       - "1705:1705"
+     command: snapserver
+     restart: always
